@@ -5,10 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'mvn clean compile'
             }
         }
-
         stage('Test') {
             when {
                 branch 'Test'
@@ -19,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Development Deployment') {
+        stage('Development') {
             when {
                 branch 'Development'
             }
