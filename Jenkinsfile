@@ -1,22 +1,11 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 echo 'Building the project...'
             }
         }
-        stage('Test') {
-            when {
-                branch 'Test'
-            }
-            steps {
-                echo 'Running tests for Test branch...'
-                
-            }
-        }
-
         stage('Development') {
             when {
                 branch 'Development'
@@ -27,6 +16,15 @@ pipeline {
                 echo 'Deployed to Development successfully.'
             }
         }
+        stage('Test') {
+            when{
+                branch 'Test'
+            }
+            steps {
+                echo 'Running tests for Test branch...'
+               
+            }
+        }        
 
         stage('Production Deployment') {
             when {
